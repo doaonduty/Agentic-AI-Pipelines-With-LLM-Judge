@@ -1,4 +1,5 @@
 import os
+from log_config import logger
 
 class ModelfileGenerator:
     """
@@ -55,5 +56,5 @@ class ModelfileGenerator:
             with open(model_file_path, "w") as f:
                 f.write(self.generate_model_file(model_config))
             modelfiledetails[model_name] = model_file_path  
-            print(f"Model file saved to {model_file_path}")
+            logger.info(f"Model file saved to {model_file_path}")
         return modelfiledetails
