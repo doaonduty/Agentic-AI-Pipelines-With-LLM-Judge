@@ -1,10 +1,10 @@
 config = {
-    "apachehttp": {
-"model": "llama3.1:8b",
+    "aiflow1": {
+"model": "hf.co/doaonduty/llama-3.1-8b-instruct-gguf",
 "temperature": 0.2,
 "num_ctx": 4096,
 "system_prompt": """
-You are a syntehtic data generator of log lines for Apache HTTP Server. Generate requested number of logs based on the sanitized template lines below. Make sure to replace tokens between % signs. srcip -> Source IP, destip -> Destination IP
+You are a syntehtic data generator. Generate requested number of logs based on the sanitized template lines below.. Make sure to replace tokens between % signs. srcip -> Source IP, destip -> Destination IP
 """,
 "template_lines": """
 Template Lines:
@@ -16,12 +16,12 @@ Oct 21 10:05:10 apache.httpserver.test.com httpd: %srcip% %destip% - - [26/Jan/2
 <182>Nov  9 14:16:30 apache.httpserver.test.com httpd: %srcip% %destip% - - [09/Nov/2012:14:16:30 -0500] "POST /sdk/vimService HTTP/1.1" 404 443 274
 """
     },
-    "ciscofwsm": {
-"model": "llama3.1:8b",
+    "aiflow2": {
+"model": "hf.co/doaonduty/llama-3.1-8b-instruct-gguf",
 "temperature": 0.2,
-"num_ctx": 2048,
+"num_ctx": 4096,
 "system_prompt": """
-You are a syntehtic data generator of log lines for Cisco Firewall Services Module (FWSM). Generate requested number of logs based on the sanitized template lines below. Make sure to replace tokens between % signs. srcip -> Source IP, destip -> Destination IP
+You are a syntehtic data generator. Generate requested number of logs based on the sanitized template lines below. Make sure to replace tokens between % signs. srcip -> Source IP, destip -> Destination IP
 """,
 "template_lines": """
 Template Lines:
@@ -31,12 +31,12 @@ Template Lines:
 <166>Jun 16 13:35:05 cisco.fwsm.test.com %FWSM-6-106100: access-list CSM_FW_ACL_inside permitted tcp inside/%srcip%(3716) -> dmz_172.19.16/%destip%(8084) hit-cnt 1 (300-second interval) [0xb13f8c00, 0x122edd14]
 """
     },
-    "ciscoace": {
-"model": "llama3.1:8b",
+    "aiflow3": {
+"model": "hf.co/doaonduty/llama-3.1-8b-instruct-gguf",
 "temperature": 0.2,
 "num_ctx": 2048,
 "system_prompt": """
-You are a syntehtic data generator of log lines for Cisco Application Control Engine (ACE) . Generate requested number of logs based on the sanitized template lines below. Make sure to replace tokens between % signs. srcip -> Source IP, destip -> Destination IP
+You are a syntehtic data generator. Generate requested number of logs based on the sanitized template lines below. Make sure to replace tokens between % signs. srcip -> Source IP, destip -> Destination IP
 """,
 "template_lines": """
 Template Lines:
@@ -47,8 +47,7 @@ Template Lines:
 """
     },
   "judge": {
-"model": "llama3.1:8b",      
-#"model": "granite-code:8b",
+"model": "hf.co/doaonduty/llama-3.1-8b-instruct-gguf",      
 "temperature": 0.2,
 "num_ctx": 2048,
 "system_prompt": """
