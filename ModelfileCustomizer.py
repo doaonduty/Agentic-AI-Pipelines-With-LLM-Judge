@@ -1,9 +1,10 @@
 # Import necessary modules
 import subprocess
 import os
+from log_config import logger
 
 # Define a class for customizing model files
-class ModelfileCustomizor:
+class ModelfileCustomizer:
     # Initialize the class with a configuration dictionary
     def __init__(self, config):
         self.config = config  # Store the configuration dictionary as an instance variable
@@ -21,13 +22,13 @@ class ModelfileCustomizor:
         """
         model_file_path = f"./Modelfiles/{model_name}.Modelfile"
         if not os.path.exists(model_file_path):
-            print(f"Error: Model file {model_file_path} does not exist.")
+            logger.error(f"Model file {model_file_path} does not exist.")
             return
         try:
             output = subprocess.check_output(f"ollama create {model_name} -f {model_file_path}", shell=True)
-            print(output.decode('utf-8'))
+            logger.info(output.decode('utf-8'))
         except subprocess.CalledProcessError as e:
-            print(f"Error: {e}")
+            logger.error(f"Error: {e}")
 
     # Confirm that a model has been created
     def confirm_model_creation(self, model_name):
@@ -43,11 +44,11 @@ class ModelfileCustomizor:
         try:
             output = subprocess.check_output(f"ollama show {model_name}", shell=True)
         except subprocess.CalledProcessError as e:
-            print(f"Error: {e}")
+           logger.error(f"Error: {e}")
 
     # Confirm that models are listed correctly
     #TODO - parameterize the modelnames to filter out properly
-    def confirm_model_listing(self):
+    def confirm_model_listing(self,model_name):
         """
         Confirms that models are listed correctly.
 
@@ -55,10 +56,10 @@ class ModelfileCustomizor:
             None
         """
         try:
-            output = subprocess.check_output("ollama list | grep 'apachehttp\|ciscofw\|ciscoace\|judge'", shell=True)
-            print(output.decode('utf-8'))
+            output = subprocess.check_output(f"ollama list | grep '{model_name}'", shell=True)
+            logger.info(output.decode('utf-8'))
         except subprocess.CalledProcessError as e:
-            print(f"Error: {e}")
+            logger.error(f"Error: {e}")
 
     # Create and confirm all models in the configuration
     def create_and_confirm_all_models(self):
@@ -71,4 +72,4 @@ class ModelfileCustomizor:
         for model_name in self.config:
             self.create_model(model_name)
             self.confirm_model_creation(model_name)
-        self.confirm_model_listing()
+            self.confirm_model_listing(model_name)
