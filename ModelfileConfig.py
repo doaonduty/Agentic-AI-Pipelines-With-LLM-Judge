@@ -4,16 +4,12 @@ config = {
 "temperature": 0.2,
 "num_ctx": 4096,
 "system_prompt": """
-You are a syntehtic data generator. Generate requested number of logs based on the sanitized template lines below.. Make sure to replace tokens between % signs. srcip -> Source IP, destip -> Destination IP
+You are a syntehtic data generator. Generate requested number of logs based on the sanitized template lines below. Make sure to replace tokens between % signs. srcip -> Source IP, destip -> Destination IP
 """,
 "template_lines": """
 Template Lines:
 Oct 21 10:05:10 apache.httpserver.test.com httpd: %srcip% %destip% - - [26/Jan/2006:12:24:54 +0000] "GET /doc/packages/ HTTP/1.0" 404 211 "-" "-" 
 <142>Apr 16 16:20:56 apache.httpserver.test.com httpd[18143]: %srcip% - - [16/Apr/2009:16:20:56 -0400] ""GET /mui/ees/images/comment.gif HTTP/1.1"" 304 - ""-"" ""Mozilla/4.0 (Windows XP 5.1) Java/1.6.0"" zTYMOwo3CpcAAHoE--QAAAAO
-<134>Apr 16 16:20:52 apache.httpserver.test.com httpd[29898]: [info] [client %srcip%] Connection to child 1 established (server smd.acme.com:443)
-<182>Nov  9 14:16:39 apache.httpserver.test.com httpd: %srcip% %destip% - - [09/Nov/2012:14:16:39 -0500] "GET /\"><script>alert(document.domain)</script>.html HTTP/1.1" 404 443 326
-<182>Nov  9 14:16:39 apache.httpserver.test.com httpd: %srcip% %destip% - - [09/Nov/2012:14:16:39 -0500] "GET / HTTP/1.0" 200 443 9334
-<182>Nov  9 14:16:30 apache.httpserver.test.com httpd: %srcip% %destip% - - [09/Nov/2012:14:16:30 -0500] "POST /sdk/vimService HTTP/1.1" 404 443 274
 """
     },
     "aiflow2": {
@@ -26,9 +22,7 @@ You are a syntehtic data generator. Generate requested number of logs based on t
 "template_lines": """
 Template Lines:
 <182>Feb 02 10:01:21 cisco.fwsm.test.com %FWSM-6-302013: Built outbound TCP connection 145981111066826388 for LAN178:%srcip%/53577 (172.17.8.2/53577) to AUTH:%destip%/80 (192.168.244.50/80)
-<166>Sep 09 09:48:58 cisco.fwsm.test.com %FWSM-6-302013: Built outbound TCP connection 144547262004893540 for srv2:%srcip%/49014 (10.121.16.10/49014) to srv4:%destip%/514 (10.123.18.11/514)
 <166>Nov 09 09:24:53 cisco.fwsm.test.com %FWSM-6-106015: Deny TCP (no connection) from %srcip%/111 to %destip%/222 flags SYN ACK on interface outside
-<166>Jun 16 13:35:05 cisco.fwsm.test.com %FWSM-6-106100: access-list CSM_FW_ACL_inside permitted tcp inside/%srcip%(3716) -> dmz_172.19.16/%destip%(8084) hit-cnt 1 (300-second interval) [0xb13f8c00, 0x122edd14]
 """
     },
     "aiflow3": {
@@ -41,8 +35,6 @@ You are a syntehtic data generator. Generate requested number of logs based on t
 "template_lines": """
 Template Lines:
 <134>Oct 17 19:48:58 cisco.ace.test.com %ACE-6-302022: Built TCP connection 0x1618 for vlan303:%srcip%/4928 (10.35.1.83/4928) to vlan600:%destip%/80 (%destip%/80)
-<163>Sep 16 12:21:56 cisco.ace.test.com qtw-ace-dot20: %ACE-3-251011: ICMP health probe failed for server %destip%, server reply timeout
-<163>Nov 15 12:35:00 cisco.ace.test.com SWEc-CN-DT-inf6: %ACE-3-251010: Health probe failed for server %destip% on port 80, connection refused by server
 <134>Jan 30 15:19:18 cisco.ace.test.com %ACE-6-302026: Built ICMP connection for faddr %srcip%/0 gaddr 165.127.12.101/220 laddr %destip%/0
 """
     },
